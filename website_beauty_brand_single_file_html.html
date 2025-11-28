@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>براند الجمال - منتجات الشعر والمكياج</title>
+  <meta name="description" content="متجر منتجات الشعر والمكياج — شحن سريع، منتجات أصلية، نصائح احترافية." />
+  <!-- Tailwind CDN for quick styling (production: compile your own Tailwind) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Small extra styles */
+    .gradient-hero { background: linear-gradient(120deg,#fef3c7 0%,#fed7e2 50%,#f0f9ff 100%); }
+    .glass { backdrop-filter: blur(6px); background: rgba(255,255,255,0.55); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- NAV -->
+  <header class="shadow-sm bg-white sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-2xl font-extrabold">BeautyCo</a>
+        <nav class="hidden md:flex gap-4 items-center text-sm">
+          <a href="#products" class="hover:text-pink-600">المنتجات</a>
+          <a href="#about" class="hover:text-pink-600">عنّا</a>
+          <a href="#how" class="hover:text-pink-600">كيف نعمل</a>
+          <a href="#contact" class="hover:text-pink-600">اتصل بنا</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="cartBtn" class="px-3 py-2 border rounded-md text-sm">عربة (<span id="cartCount">0</span>)</button>
+        <a href="#buy" class="hidden md:inline-block bg-pink-500 text-white px-4 py-2 rounded-lg text-sm">اشترِ الآن</a>
+        <button class="md:hidden px-2 py-1" id="menuBtn">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="gradient-hero">
+    <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">منتجات شعر ومكياج احترافية</h1>
+        <p class="mb-6 text-lg text-gray-700">تشكيلة مميزة من الزيوت، السيرومات، والماكي́ب المختارة بعناية. مناسب لكل انواع الشعر والبشرة.</p>
+        <div class="flex gap-3">
+          <a href="#products" class="bg-pink-600 text-white px-5 py-3 rounded-lg font-semibold">تسوق الآن</a>
+          <a href="#contact" class="px-5 py-3 border rounded-lg">اطلب استشارة</a>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-2 text-sm text-gray-600">
+          <div class="flex flex-col items-start">
+            <strong>شحن سريع</strong>
+            <span>داخل 3-5 أيام عمل</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <strong>خدمة عملاء</strong>
+            <span>دعم عبر واتساب</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <strong>منتجات أصلية</strong>
+            <span>فحوصات جودة</span>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="glass p-6 rounded-2xl shadow-lg">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="products" class="w-full h-72 object-cover rounded-xl mb-4" />
+          <p class="text-sm">مجموعة مميزة: سيروم للشعر + سيروم للبشرة + طقم مكياج صغير. مثال لعرض مُدمج.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="max-w-6xl mx-auto px-4 py-14">
+    <h2 class="text-2xl font-bold mb-6">منتجات مختارة</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Product Card (repeat) -->
+      <template id="productTpl">
+        <div class="bg-white rounded-xl shadow p-4 flex flex-col">
+          <img class="h-44 w-full object-cover rounded-md mb-3" src="" alt="" />
+          <h3 class="font-semibold text-lg">اسم المنتج</h3>
+          <p class="text-sm text-gray-500 mb-2">ملخص قصير عن المنتج.</p>
+          <div class="mt-auto flex items-center justify-between">
+            <strong class="text-lg">$0.00</strong>
+            <button class="addToCart px-3 py-2 bg-pink-500 text-white rounded-md">أضف للعربة</button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-white py-10">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <h3 class="text-2xl font-bold mb-3">عنّا</h3>
+        <p class="text-gray-700 mb-3">نحن فريق متخصص في مستحضرات الشعر والمكياج. نهدف لتقديم منتجات فعالة وآمنة مع خدمة عملاء محترفة وإرشاد للمظهر اليومي والاحتفالي.</p>
+        <ul class="list-disc pr-5 text-gray-700">
+          <li>منتجات مختارة بعناية</li>
+          <li>شحن موثوق وسريع</li>
+          <li>سياسة استرجاع مرنة</li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="about" class="rounded-xl w-full object-cover h-64" />
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="max-w-6xl mx-auto px-4 py-10">
+    <h3 class="text-2xl font-bold mb-6">كيف تشتري</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h4 class="font-semibold mb-2">1. اختر منتجك</h4>
+        <p class="text-sm text-gray-600">تصفح التشكيلة أو استخدم فلاتر البحث.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h4 class="font-semibold mb-2">2. أدخل بيانات الشحن</h4>
+        <p class="text-sm text-gray-600">نقدم خيارات شحن متعددة ومتابعة الطلب.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow text-center">
+        <h4 class="font-semibold mb-2">3. استلم وجرّب</h4>
+        <p class="text-sm text-gray-600">استرجاع خلال 7 أيام إذا لم يعجبك.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-pink-50 py-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-2xl font-bold mb-4">تواصل معنا</h3>
+      <form id="contactForm" class="grid gap-3 md:grid-cols-2 bg-white p-6 rounded-lg shadow">
+        <input required name="name" placeholder="الاسم" class="p-3 border rounded-md" />
+        <input required name="email" type="email" placeholder="البريد الالكتروني" class="p-3 border rounded-md" />
+        <input name="phone" placeholder="رقم الهاتف (اختياري)" class="p-3 border rounded-md" />
+        <select name="reason" class="p-3 border rounded-md">
+          <option>اختار السبب</option>
+          <option>استفسار عن منتج</option>
+          <option>طلب شراكة</option>
+          <option>شكوى</option>
+        </select>
+        <textarea required name="message" placeholder="الرسالة" class="p-3 border rounded-md md:col-span-2"></textarea>
+        <button class="md:col-span-2 bg-pink-600 text-white px-4 py-3 rounded-md">أرسل</button>
+      </form>
+      <p class="text-sm text-gray-600 mt-3">أو راسلنا عبر واتساب: <strong>+20 100 000 0000</strong></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t mt-8">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div>
+        <strong>BeautyCo</strong>
+        <div class="text-sm text-gray-600">حقوق الملكية © 2025</div>
+      </div>
+      <div class="flex gap-3 items-center">
+        <a href="#" aria-label="instagram">إنستغرام</a>
+        <a href="#" aria-label="tiktok">تيك توك</a>
+        <a href="#" aria-label="snap">سناب شات</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART / SCRIPT -->
+  <div id="cartModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full">
+      <h4 class="font-bold mb-3">عربة التسوق</h4>
+      <div id="cartItems" class="space-y-3"></div>
+      <div class="mt-4 flex items-center justify-between">
+        <strong>المجموع: <span id="cartTotal">$0.00</span></strong>
+        <button id="checkoutBtn" class="bg-pink-600 text-white px-4 py-2 rounded-md">الدفع</button>
+      </div>
+      <button id="closeCart" class="mt-3 text-sm text-gray-600">إغلاق</button>
+    </div>
+  </div>
+
+  <script>
+    // Sample products data (replace with dynamic feed / CMS)
+    const products = [
+      {id:1, name:'سيروم بزيت الأرغان', price:12.99, img:'https://images.unsplash.com/photo-1583336663265-3a2b1b0b6e6f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example'},
+      {id:2, name:'قناع ترميم للشعر', price:19.50, img:'https://images.unsplash.com/photo-1600180758890-6d1686d97d40?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example'},
+      {id:3, name:'طقم مكياج صغير', price:29.00, img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=example'},
+    ];
+
+    // Render product cards
+    const tpl = document.getElementById('productTpl');
+    const grid = document.querySelector('#products .grid') || document.querySelector('#products > div');
+    const productsContainer = document.querySelector('#products .grid');
+    products.forEach(p=>{
+      const el = tpl.content.cloneNode(true);
+      el.querySelector('img').src = p.img;
+      el.querySelector('img').alt = p.name;
+      el.querySelector('h3').textContent = p.name;
+      el.querySelector('p').textContent = '';
+      el.querySelector('strong').textContent = '$' + p.price.toFixed(2);
+      const btn = el.querySelector('.addToCart');
+      btn.addEventListener('click', ()=> addToCart(p));
+      productsContainer.appendChild(el);
+    });
+
+    // Cart logic (basic)
+    let cart = [];
+    function addToCart(product){
+      cart.push(product);
+      document.getElementById('cartCount').textContent = cart.length;
+      updateCartTotal();
+    }
+    function updateCartTotal(){
+      const total = cart.reduce((s,i)=>s+i.price,0);
+      document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+    }
+
+    // Cart modal
+    const cartBtn = document.getElementById('cartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const cartItems = document.getElementById('cartItems');
+    cartBtn.addEventListener('click', ()=>{
+      cartItems.innerHTML = '';
+      if(cart.length===0) cartItems.innerHTML = '<div class="text-sm text-gray-600">العربة فارغة</div>';
+      cart.forEach((it, idx)=>{
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between gap-2';
+        div.innerHTML = `<div>${it.name} <small class='text-gray-500'> - $${it.price.toFixed(2)}</small></div><button data-idx="${idx}" class='text-red-500 text-sm removeBtn'>حذف</button>`;
+        cartItems.appendChild(div);
+      });
+      document.getElementById('cartCount').textContent = cart.length;
+      updateCartTotal();
+      cartModal.classList.remove('hidden');
+      cartModal.classList.add('flex');
+      // attach remove handlers
+      document.querySelectorAll('.removeBtn').forEach(b=> b.addEventListener('click', e=>{
+        const i = +e.target.dataset.idx;
+        cart.splice(i,1);
+        cartBtn.click(); // reopen
+      }));
+    });
+    document.getElementById('closeCart').addEventListener('click', ()=>{
+      cartModal.classList.add('hidden'); cartModal.classList.remove('flex');
+    });
+
+    // Contact form (demo: not sending anywhere)
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      alert('شكراً! تم استلام رسالتك (هذه نسخة تجريبية).');
+      e.target.reset();
+    });
+
+    // Mobile menu (basic)
+    document.getElementById('menuBtn').addEventListener('click', ()=>{
+      alert('قائمة موبايل: أضف هنا قائمة منبثقة أو NavDrawer حسب رغبتك');
+    });
+
+    // Checkout demo
+    document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+      if(cart.length===0) return alert('العربة فارغة');
+      alert('انتقال لصفحة الدفع (هذا مثال).');
+    });
+  </script>
+</body>
+</html>
